@@ -40,12 +40,20 @@ spec:
               readOnly: true
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
+            - name: plugin-config
+              readOnly: true
+              mountPath: /usr/share/nginx/html/config.json
+              subPath: config.json
       volumes:
         - name: {{ template "openshift-console-plugin.certificateSecret" . }}
           secret:
             secretName: {{ template "openshift-console-plugin.certificateSecret" . }}
             defaultMode: 420
         - name: nginx-conf
+          configMap:
+            name: {{ template "openshift-console-plugin.name" . }}
+            defaultMode: 420
+        - name: plugin-config
           configMap:
             name: {{ template "openshift-console-plugin.name" . }}
             defaultMode: 420

@@ -25,6 +25,11 @@ const config: Configuration = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      '@cilium-models': path.resolve(__dirname, 'src/cilium/models'),
+      '@cilium-components': path.resolve(__dirname, 'src/cilium/components'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+    },
   },
   module: {
     rules: [

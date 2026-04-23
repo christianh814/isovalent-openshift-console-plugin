@@ -3,6 +3,8 @@ plugin:
   name: ""
   description: ""
   image: ""
+  # hubbleUrl is required. Pass via --set plugin.hubbleUrl=https://hubble.example.com
+  hubbleUrl: ""
   imagePullPolicy: IfNotPresent
   imagePullSecrets: []
   replicas: 2

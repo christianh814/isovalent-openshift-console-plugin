@@ -22,3 +22,7 @@ data:
         root                /usr/share/nginx/html;
       }
     }
+  config.json: |
+    {
+      "hubbleUrl": {{ required "plugin.hubbleUrl is required" .Values.plugin.hubbleUrl | quote }}
+    }

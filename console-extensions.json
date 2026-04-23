@@ -1,20 +1,131 @@
 [
   {
-    "type": "console.page/route",
+    "type": "console.flag/model",
     "properties": {
-      "exact": true,
-      "path": "/example",
-      "component": { "$codeRef": "ExamplePage" }
+      "flag": "CILIUM_NETWORK_POLICY",
+      "model": {
+        "group": "cilium.io",
+        "kind": "CiliumNetworkPolicy",
+        "version": "v2"
+      }
     }
   },
   {
-    "type": "console.navigation/href",
+    "type": "console.flag/model",
     "properties": {
-      "id": "example",
-      "name": "%plugin__console-plugin-template~Plugin example%",
-      "href": "/example",
+      "flag": "CILIUM_CLUSTERWIDE_NETWORK_POLICY",
+      "model": {
+        "group": "cilium.io",
+        "kind": "CiliumClusterwideNetworkPolicy",
+        "version": "v2"
+      }
+    }
+  },
+  {
+    "type": "console.navigation/section",
+    "properties": {
+      "id": "isovalent",
+      "insertAfter": "ecosystem",
       "perspective": "admin",
-      "section": "home"
+      "name": "Isovalent"
+    }
+  },
+  {
+    "type": "console.navigation/resource-ns",
+    "flags": {
+      "required": ["CILIUM_NETWORK_POLICY"]
+    },
+    "properties": {
+      "id": "ciliumnetworkpolicies",
+      "name": "%plugin__isovalent-openshift-console-plugin~CiliumNetworkPolicies%",
+      "perspective": "admin",
+      "section": "isovalent",
+      "model": {
+        "group": "cilium.io",
+        "kind": "CiliumNetworkPolicy",
+        "version": "v2"
+      }
+    }
+  },
+  {
+    "type": "console.navigation/resource-cluster",
+    "flags": {
+      "required": ["CILIUM_CLUSTERWIDE_NETWORK_POLICY"]
+    },
+    "properties": {
+      "id": "ciliumclusterwidenetworkpolicies",
+      "name": "%plugin__isovalent-openshift-console-plugin~CiliumClusterwideNetworkPolicies%",
+      "perspective": "admin",
+      "section": "isovalent",
+      "model": {
+        "group": "cilium.io",
+        "kind": "CiliumClusterwideNetworkPolicy",
+        "version": "v2"
+      }
+    }
+  },
+  {
+    "type": "console.page/resource/list",
+    "flags": {
+      "required": ["CILIUM_NETWORK_POLICY"]
+    },
+    "properties": {
+      "model": {
+        "group": "cilium.io",
+        "kind": "CiliumNetworkPolicy",
+        "version": "v2"
+      },
+      "component": {
+        "$codeRef": "CiliumNetworkPolicyList"
+      }
+    }
+  },
+  {
+    "type": "console.page/resource/details",
+    "flags": {
+      "required": ["CILIUM_NETWORK_POLICY"]
+    },
+    "properties": {
+      "model": {
+        "group": "cilium.io",
+        "kind": "CiliumNetworkPolicy",
+        "version": "v2"
+      },
+      "component": {
+        "$codeRef": "CiliumNetworkPolicyNavPage"
+      }
+    }
+  },
+  {
+    "type": "console.page/resource/list",
+    "flags": {
+      "required": ["CILIUM_CLUSTERWIDE_NETWORK_POLICY"]
+    },
+    "properties": {
+      "model": {
+        "group": "cilium.io",
+        "kind": "CiliumClusterwideNetworkPolicy",
+        "version": "v2"
+      },
+      "component": {
+        "$codeRef": "CiliumClusterwideNetworkPolicyList"
+      }
+    }
+  },
+  {
+    "type": "console.page/resource/details",
+    "flags": {
+      "required": ["CILIUM_CLUSTERWIDE_NETWORK_POLICY"]
+    },
+    "properties": {
+      "model": {
+        "group": "cilium.io",
+        "kind": "CiliumClusterwideNetworkPolicy",
+        "version": "v2"
+      },
+      "component": {
+        "$codeRef": "CiliumClusterwideNetworkPolicyNavPage"
+      }
     }
   }
 ]
