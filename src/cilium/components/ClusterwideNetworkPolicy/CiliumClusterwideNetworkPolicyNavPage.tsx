@@ -9,6 +9,7 @@ import { CiliumClusterwideNetworkPolicyModel } from '@cilium-models/CiliumCluste
 import { useIsovalentTranslation } from '@utils/hooks/useIsovalentTranslation';
 import CiliumClusterwideNetworkPolicyDetailsTab from './CiliumClusterwideNetworkPolicyDetailsTab';
 import ResourceYAMLTab from '@utils/components/ResourceYAMLTab/ResourceYAMLTab';
+import StatusTab from '@utils/components/StatusTab/StatusTab';
 
 type CiliumClusterwideNetworkPolicyNavPageProps = {
   name: string;
@@ -43,6 +44,11 @@ const CiliumClusterwideNetworkPolicyNavPage: React.FC<CiliumClusterwideNetworkPo
         href: 'yaml',
         name: t('YAML'),
         component: ResourceYAMLTab,
+      },
+      {
+        href: 'status',
+        name: t('Status'),
+        component: StatusTab,
       },
     ],
     [t],

@@ -10,10 +10,10 @@ import {
   PageSection,
   Title,
 } from '@patternfly/react-core';
-import { Timestamp } from '@openshift-console/dynamic-plugin-sdk';
-import { CiliumClusterwideNetworkPolicyKind } from '@cilium-models/CiliumClusterwideNetworkPolicyModel';
+import { Timestamp, ResourceIcon } from '@openshift-console/dynamic-plugin-sdk';
+import { CiliumClusterwideNetworkPolicyKind, CiliumClusterwideNetworkPolicyModel } from '@cilium-models/CiliumClusterwideNetworkPolicyModel';
 import { useIsovalentTranslation } from '@utils/hooks/useIsovalentTranslation';
-import HubbleLinkBanner from '@utils/components/HubbleLinkBanner/HubbleLinkBanner';
+import HubbleLink from '@utils/components/HubbleLink/HubbleLink';
 
 type Props = RouteComponentProps<{ name: string }> & {
   obj?: CiliumClusterwideNetworkPolicyKind;
@@ -31,7 +31,6 @@ const CiliumClusterwideNetworkPolicyDetailsTab: React.FC<Props> = ({ obj }) => {
 
   return (
     <PageSection>
-      <HubbleLinkBanner />
       <Grid hasGutter className="pf-v5-u-mt-md">
         <GridItem span={6}>
           <Title headingLevel="h2" size="lg" className="pf-v5-u-mb-md">
@@ -40,7 +39,18 @@ const CiliumClusterwideNetworkPolicyDetailsTab: React.FC<Props> = ({ obj }) => {
           <DescriptionList>
             <DescriptionListGroup>
               <DescriptionListTerm>{t('Name')}</DescriptionListTerm>
-              <DescriptionListDescription>{obj?.metadata?.name}</DescriptionListDescription>
+              <DescriptionListDescription>
+                <ResourceIcon
+                  kind={`${CiliumClusterwideNetworkPolicyModel.apiGroup}~${CiliumClusterwideNetworkPolicyModel.apiVersion}~${CiliumClusterwideNetworkPolicyModel.kind}`}
+                />
+                {obj?.metadata?.name}
+              </DescriptionListDescription>
+            </DescriptionListGroup>
+            <DescriptionListGroup>
+              <DescriptionListTerm>{t('More Info')}</DescriptionListTerm>
+              <DescriptionListDescription>
+                <HubbleLink />
+              </DescriptionListDescription>
             </DescriptionListGroup>
             <DescriptionListGroup>
               <DescriptionListTerm>{t('Created')}</DescriptionListTerm>

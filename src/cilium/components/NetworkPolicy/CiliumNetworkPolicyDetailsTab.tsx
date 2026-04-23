@@ -11,12 +11,13 @@ import {
   Title,
 } from '@patternfly/react-core';
 import {
+  ResourceIcon,
   ResourceLink,
   Timestamp,
 } from '@openshift-console/dynamic-plugin-sdk';
 import { CiliumNetworkPolicyKind, CiliumNetworkPolicyModel } from '@cilium-models/CiliumNetworkPolicyModel';
 import { useIsovalentTranslation } from '@utils/hooks/useIsovalentTranslation';
-import HubbleLinkBanner from '@utils/components/HubbleLinkBanner/HubbleLinkBanner';
+import HubbleLink from '@utils/components/HubbleLink/HubbleLink';
 
 type CiliumNetworkPolicyDetailsTabProps = RouteComponentProps<{
   ns: string;
@@ -37,7 +38,6 @@ const CiliumNetworkPolicyDetailsTab: React.FC<CiliumNetworkPolicyDetailsTabProps
 
   return (
     <PageSection>
-      <HubbleLinkBanner namespace={obj?.metadata?.namespace} />
       <Grid hasGutter className="pf-v5-u-mt-md">
         <GridItem span={6}>
           <Title headingLevel="h2" size="lg" className="pf-v5-u-mb-md">
@@ -46,7 +46,12 @@ const CiliumNetworkPolicyDetailsTab: React.FC<CiliumNetworkPolicyDetailsTabProps
           <DescriptionList>
             <DescriptionListGroup>
               <DescriptionListTerm>{t('Name')}</DescriptionListTerm>
-              <DescriptionListDescription>{obj?.metadata?.name}</DescriptionListDescription>
+              <DescriptionListDescription>
+                <ResourceIcon
+                  kind={`${CiliumNetworkPolicyModel.apiGroup}~${CiliumNetworkPolicyModel.apiVersion}~${CiliumNetworkPolicyModel.kind}`}
+                />
+                {obj?.metadata?.name}
+              </DescriptionListDescription>
             </DescriptionListGroup>
             <DescriptionListGroup>
               <DescriptionListTerm>{t('Namespace')}</DescriptionListTerm>
@@ -54,6 +59,12 @@ const CiliumNetworkPolicyDetailsTab: React.FC<CiliumNetworkPolicyDetailsTabProps
                 {obj?.metadata?.namespace && (
                   <ResourceLink kind="Namespace" name={obj.metadata.namespace} />
                 )}
+              </DescriptionListDescription>
+            </DescriptionListGroup>
+            <DescriptionListGroup>
+              <DescriptionListTerm>{t('More Info')}</DescriptionListTerm>
+              <DescriptionListDescription>
+                <HubbleLink namespace={obj?.metadata?.namespace} />
               </DescriptionListDescription>
             </DescriptionListGroup>
             <DescriptionListGroup>

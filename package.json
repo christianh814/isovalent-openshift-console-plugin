@@ -82,7 +82,8 @@
       "CiliumNetworkPolicyList": "./cilium/components/NetworkPolicy/CiliumNetworkPolicyList",
       "CiliumNetworkPolicyNavPage": "./cilium/components/NetworkPolicy/CiliumNetworkPolicyNavPage",
       "CiliumClusterwideNetworkPolicyList": "./cilium/components/ClusterwideNetworkPolicy/CiliumClusterwideNetworkPolicyList",
-      "CiliumClusterwideNetworkPolicyNavPage": "./cilium/components/ClusterwideNetworkPolicy/CiliumClusterwideNetworkPolicyNavPage"
+      "CiliumClusterwideNetworkPolicyNavPage": "./cilium/components/ClusterwideNetworkPolicy/CiliumClusterwideNetworkPolicyNavPage",
+      "yamlTemplates": "./cilium/templates/yamlTemplates"
     },
     "dependencies": {
       "@console/pluginAPI": "^4.20.0"

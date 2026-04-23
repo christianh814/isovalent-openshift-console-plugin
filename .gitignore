@@ -4,6 +4,7 @@
 .devcontainer/dev.env
 integration-tests/videos
 integration-tests/screenshots
+.chart-dist/
 
 # Yarn v4 (Berry)
 .yarn/*

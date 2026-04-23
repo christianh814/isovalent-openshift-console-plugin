@@ -17,7 +17,7 @@ import {
 import { sortable } from '@patternfly/react-table';
 import { CiliumNetworkPolicyKind, CiliumNetworkPolicyModel } from '@cilium-models/CiliumNetworkPolicyModel';
 import { useIsovalentTranslation } from '@utils/hooks/useIsovalentTranslation';
-import HubbleLinkBanner from '@utils/components/HubbleLinkBanner/HubbleLinkBanner';
+import HubbleLink from '@utils/components/HubbleLink/HubbleLink';
 
 const useColumns = (): TableColumn<CiliumNetworkPolicyKind>[] => {
   const { t } = useIsovalentTranslation();
@@ -137,14 +137,20 @@ const CiliumNetworkPolicyList: React.FC<CiliumNetworkPolicyListProps> = ({
           </ListPageCreate>
         </ListPageHeader>
       )}
-      <HubbleLinkBanner namespace={namespace} />
       <ListPageBody>
         {!hideNameLabelFilters && (
-          <ListPageFilter
-            data={data}
-            loaded={loaded}
-            onFilterChange={onFilterChange}
-          />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <ListPageFilter
+                data={data}
+                loaded={loaded}
+                onFilterChange={onFilterChange}
+              />
+            </div>
+            <div style={{ paddingRight: '1rem' }}>
+              <HubbleLink namespace={namespace} />
+            </div>
+          </div>
         )}
         <VirtualizedTable<CiliumNetworkPolicyKind>
           data={filteredData as CiliumNetworkPolicyKind[]}

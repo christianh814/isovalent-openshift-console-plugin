@@ -1,5 +1,16 @@
 apiVersion: v2
-name: openshift-console-plugin
-description: A Helm chart for Kubernetes
+name: isovalent-openshift-console-plugin
+description: OpenShift Console plugin for Isovalent / Cilium (CiliumNetworkPolicy, CiliumClusterwideNetworkPolicy) with a deep link to Isovalent Hubble Timescape.
 type: application
 version: 0.1.0
+appVersion: v0.0.4
+home: https://github.com/christianh814/isovalent-openshift-console-plugin
+sources:
+  - https://github.com/christianh814/isovalent-openshift-console-plugin
+maintainers:
+  - name: christianh814
+    url: https://github.com/christianh814
+annotations:
+  org.opencontainers.image.source: https://github.com/christianh814/isovalent-openshift-console-plugin
+  org.opencontainers.image.description: OpenShift Console plugin for Isovalent / Cilium
+  org.opencontainers.image.licenses: Apache-2.0

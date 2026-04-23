@@ -127,5 +127,39 @@
         "$codeRef": "CiliumClusterwideNetworkPolicyNavPage"
       }
     }
+  },
+  {
+    "type": "console.yaml-template",
+    "flags": {
+      "required": ["CILIUM_NETWORK_POLICY"]
+    },
+    "properties": {
+      "name": "default",
+      "model": {
+        "group": "cilium.io",
+        "kind": "CiliumNetworkPolicy",
+        "version": "v2"
+      },
+      "template": {
+        "$codeRef": "yamlTemplates.defaultCiliumNetworkPolicyYamlTemplate"
+      }
+    }
+  },
+  {
+    "type": "console.yaml-template",
+    "flags": {
+      "required": ["CILIUM_CLUSTERWIDE_NETWORK_POLICY"]
+    },
+    "properties": {
+      "name": "default",
+      "model": {
+        "group": "cilium.io",
+        "kind": "CiliumClusterwideNetworkPolicy",
+        "version": "v2"
+      },
+      "template": {
+        "$codeRef": "yamlTemplates.defaultCiliumClusterwideNetworkPolicyYamlTemplate"
+      }
+    }
   }
 ]

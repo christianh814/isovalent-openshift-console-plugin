@@ -20,7 +20,7 @@ import {
   CiliumClusterwideNetworkPolicyModel,
 } from '@cilium-models/CiliumClusterwideNetworkPolicyModel';
 import { useIsovalentTranslation } from '@utils/hooks/useIsovalentTranslation';
-import HubbleLinkBanner from '@utils/components/HubbleLinkBanner/HubbleLinkBanner';
+import HubbleLink from '@utils/components/HubbleLink/HubbleLink';
 
 const useColumns = (): TableColumn<CiliumClusterwideNetworkPolicyKind>[] => {
   const { t } = useIsovalentTranslation();
@@ -126,14 +126,20 @@ const CiliumClusterwideNetworkPolicyList: React.FC<CiliumClusterwideNetworkPolic
           </ListPageCreate>
         </ListPageHeader>
       )}
-      <HubbleLinkBanner />
       <ListPageBody>
         {!hideNameLabelFilters && (
-          <ListPageFilter
-            data={data}
-            loaded={loaded}
-            onFilterChange={onFilterChange}
-          />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <ListPageFilter
+                data={data}
+                loaded={loaded}
+                onFilterChange={onFilterChange}
+              />
+            </div>
+            <div style={{ paddingRight: '1rem' }}>
+              <HubbleLink />
+            </div>
+          </div>
         )}
         <VirtualizedTable<CiliumClusterwideNetworkPolicyKind>
           data={filteredData as CiliumClusterwideNetworkPolicyKind[]}

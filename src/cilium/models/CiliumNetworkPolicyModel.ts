@@ -58,6 +58,13 @@ export interface CiliumNetworkPolicySpec {
 }
 
 export interface CiliumNetworkPolicyStatus {
+  conditions?: Array<{
+    type?: string;
+    status?: string;
+    reason?: string;
+    message?: string;
+    lastTransitionTime?: string;
+  }>;
   nodes?: Record<string, {
     lastUpdated?: string;
     ok?: boolean;
