@@ -2,7 +2,7 @@
 plugin:
   name: ""
   description: ""
-  image: ""
+  image: "quay.io/christianh814/isovalent-openshift-console-plugin:v0.0.4"
   # hubbleUrl is required. Pass via --set plugin.hubbleUrl=https://hubble.example.com
   hubbleUrl: ""
   imagePullPolicy: IfNotPresent
