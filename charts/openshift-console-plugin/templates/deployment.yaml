@@ -13,6 +13,8 @@ spec:
       {{- include "openshift-console-plugin.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
       labels:
             {{- include "openshift-console-plugin.labels" . | nindent 8 }}
     spec:

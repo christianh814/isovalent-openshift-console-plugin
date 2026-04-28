@@ -16,7 +16,7 @@ If your Hubble UI is already exposed via an OpenShift `Route`, you can derive th
 
 ```bash
 helm upgrade -i isovalent-openshift-console-plugin \
-  oci://ghcr.io/christianh814/charts/isovalent-openshift-console-plugin --version 0.1.6 \
+  oci://ghcr.io/christianh814/charts/isovalent-openshift-console-plugin --version 0.1.7 \
   -n isovalent-openshift-console-plugin --create-namespace \
   --set plugin.hubbleUrl=https://$(oc get route -n cilium hubble -o jsonpath='{.spec.host}')
 ```
