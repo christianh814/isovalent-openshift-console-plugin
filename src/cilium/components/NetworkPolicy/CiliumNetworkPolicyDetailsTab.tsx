@@ -66,7 +66,7 @@ const CiliumNetworkPolicyDetailsTab: React.FC<CiliumNetworkPolicyDetailsTabProps
             <DescriptionListGroup>
               <DescriptionListTerm>{t('Advanced Configuration')}</DescriptionListTerm>
               <DescriptionListDescription>
-                <HubbleLink namespace={obj?.metadata?.namespace} />
+                <HubbleLink />
               </DescriptionListDescription>
             </DescriptionListGroup>
             <DescriptionListGroup>

@@ -16,7 +16,7 @@ If your Hubble UI is already exposed via an OpenShift `Route`, you can derive th
 
 ```bash
 helm upgrade -i isovalent-openshift-console-plugin \
-  oci://ghcr.io/christianh814/charts/isovalent-openshift-console-plugin --version 0.1.3 \
+  oci://ghcr.io/christianh814/charts/isovalent-openshift-console-plugin --version 0.1.6 \
   -n isovalent-openshift-console-plugin --create-namespace \
   --set plugin.hubbleUrl=https://$(oc get route -n cilium hubble -o jsonpath='{.spec.host}')
 ```
@@ -27,7 +27,7 @@ After the install completes, refresh the OpenShift Console; the **Isovalent** se
 
 | Key | Default | Description |
 | --- | --- | --- |
-| `plugin.image` | `quay.io/christianh814/isovalent-openshift-console-plugin:v0.0.5` | Plugin container image. |
+| `plugin.image` | `quay.io/christianh814/isovalent-openshift-console-plugin:v0.0.8` | Plugin container image. |
 | `plugin.hubbleUrl` | `""` | Base URL of your Isovalent Hubble Timescape / Hubble UI. Optional — when unset, the deep link is hidden. |
 | `plugin.imagePullPolicy` | `IfNotPresent` | Image pull policy for the plugin container. |
 | `plugin.imagePullSecrets` | `[]` | List of image pull secrets. |

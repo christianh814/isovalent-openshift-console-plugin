@@ -2,26 +2,19 @@ import * as React from 'react';
 import { useHubbleUrl } from '@utils/hooks/useHubbleUrl';
 import isovalentLogo from '../../../images/isovalent-logo.png';
 
-type HubbleLinkProps = {
-  namespace?: string;
-};
-
-const HubbleLink: React.FC<HubbleLinkProps> = ({ namespace }) => {
+const HubbleLink: React.FC = () => {
   const hubbleUrl = useHubbleUrl();
 
-  if (!hubbleUrl) {
-    return null;
-  }
+  const isExternal = Boolean(hubbleUrl);
+  const href = isExternal ? hubbleUrl : '/k8s/ns/cilium/route.openshift.io~v1~Route';
 
-  const href = namespace
-    ? `${hubbleUrl}/?namespace=${encodeURIComponent(namespace)}`
-    : hubbleUrl;
+  const linkProps = isExternal
+    ? { href, target: '_blank', rel: 'noopener noreferrer' as const }
+    : { href };
 
   return (
     <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...linkProps}
       style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
     >
       <img
@@ -29,7 +22,7 @@ const HubbleLink: React.FC<HubbleLinkProps> = ({ namespace }) => {
         alt=""
         style={{ height: '1em', width: 'auto', verticalAlign: 'middle' }}
       />
-      Isovalent Hubble Timescape
+      {isExternal ? 'Isovalent Hubble Timescape' : 'Expose Hubble Timescape'}
     </a>
   );
 };

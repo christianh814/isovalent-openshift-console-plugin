@@ -148,7 +148,7 @@ const CiliumNetworkPolicyList: React.FC<CiliumNetworkPolicyListProps> = ({
               />
             </div>
             <div style={{ paddingRight: '1rem' }}>
-              <HubbleLink namespace={namespace} />
+              <HubbleLink />
             </div>
           </div>
         )}
