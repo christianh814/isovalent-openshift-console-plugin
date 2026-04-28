@@ -18,6 +18,8 @@ import {
 import { CiliumNetworkPolicyKind, CiliumNetworkPolicyModel } from '@cilium-models/CiliumNetworkPolicyModel';
 import { useIsovalentTranslation } from '@utils/hooks/useIsovalentTranslation';
 import HubbleLink from '@utils/components/HubbleLink/HubbleLink';
+import Selector from '@utils/components/Selector/Selector';
+import RuleList from '@utils/components/RuleList/RuleList';
 
 type CiliumNetworkPolicyDetailsTabProps = RouteComponentProps<{
   ns: string;
@@ -62,7 +64,7 @@ const CiliumNetworkPolicyDetailsTab: React.FC<CiliumNetworkPolicyDetailsTabProps
               </DescriptionListDescription>
             </DescriptionListGroup>
             <DescriptionListGroup>
-              <DescriptionListTerm>{t('More Info')}</DescriptionListTerm>
+              <DescriptionListTerm>{t('Advanced Configuration')}</DescriptionListTerm>
               <DescriptionListDescription>
                 <HubbleLink namespace={obj?.metadata?.namespace} />
               </DescriptionListDescription>
@@ -90,31 +92,17 @@ const CiliumNetworkPolicyDetailsTab: React.FC<CiliumNetworkPolicyDetailsTabProps
             <DescriptionListGroup>
               <DescriptionListTerm>{t('Endpoint Selector')}</DescriptionListTerm>
               <DescriptionListDescription>
-                {obj?.spec?.endpointSelector
-                  ? <code>{JSON.stringify(obj.spec.endpointSelector, null, 2)}</code>
-                  : '—'}
+                <Selector selector={obj?.spec?.endpointSelector} />
               </DescriptionListDescription>
             </DescriptionListGroup>
             <DescriptionListGroup>
               <DescriptionListTerm>{t('Ingress Rules')}</DescriptionListTerm>
               <DescriptionListDescription>{ingressCount}</DescriptionListDescription>
             </DescriptionListGroup>
-            {(obj?.spec?.ingressDeny?.length ?? 0) > 0 && (
-              <DescriptionListGroup>
-                <DescriptionListTerm>{t('Ingress Deny Rules')}</DescriptionListTerm>
-                <DescriptionListDescription>{obj.spec.ingressDeny.length}</DescriptionListDescription>
-              </DescriptionListGroup>
-            )}
             <DescriptionListGroup>
               <DescriptionListTerm>{t('Egress Rules')}</DescriptionListTerm>
               <DescriptionListDescription>{egressCount}</DescriptionListDescription>
             </DescriptionListGroup>
-            {(obj?.spec?.egressDeny?.length ?? 0) > 0 && (
-              <DescriptionListGroup>
-                <DescriptionListTerm>{t('Egress Deny Rules')}</DescriptionListTerm>
-                <DescriptionListDescription>{obj.spec.egressDeny.length}</DescriptionListDescription>
-              </DescriptionListGroup>
-            )}
             {obj?.spec?.enableDefaultDeny && (
               <DescriptionListGroup>
                 <DescriptionListTerm>{t('Enable Default Deny')}</DescriptionListTerm>
@@ -152,7 +140,16 @@ const CiliumNetworkPolicyDetailsTab: React.FC<CiliumNetworkPolicyDetailsTabProps
           <Title headingLevel="h2" size="lg" className="pf-v5-u-mb-md">
             {t('Ingress Rules')}
           </Title>
-          <pre>{JSON.stringify(obj.spec.ingress, null, 2)}</pre>
+          <RuleList rules={obj.spec.ingress} direction="ingress" />
+        </PageSection>
+      )}
+
+      {obj?.spec?.ingressDeny && obj.spec.ingressDeny.length > 0 && (
+        <PageSection>
+          <Title headingLevel="h2" size="lg" className="pf-v5-u-mb-md">
+            {t('Ingress Deny Rules')}
+          </Title>
+          <RuleList rules={obj.spec.ingressDeny} direction="ingress" deny />
         </PageSection>
       )}
 
@@ -161,7 +158,16 @@ const CiliumNetworkPolicyDetailsTab: React.FC<CiliumNetworkPolicyDetailsTabProps
           <Title headingLevel="h2" size="lg" className="pf-v5-u-mb-md">
             {t('Egress Rules')}
           </Title>
-          <pre>{JSON.stringify(obj.spec.egress, null, 2)}</pre>
+          <RuleList rules={obj.spec.egress} direction="egress" />
+        </PageSection>
+      )}
+
+      {obj?.spec?.egressDeny && obj.spec.egressDeny.length > 0 && (
+        <PageSection>
+          <Title headingLevel="h2" size="lg" className="pf-v5-u-mb-md">
+            {t('Egress Deny Rules')}
+          </Title>
+          <RuleList rules={obj.spec.egressDeny} direction="egress" deny />
         </PageSection>
       )}
     </PageSection>
