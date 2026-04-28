@@ -24,5 +24,5 @@ data:
     }
   config.json: |
     {
-      "hubbleUrl": {{ required "plugin.hubbleUrl is required" .Values.plugin.hubbleUrl | quote }}
+      "hubbleUrl": {{ default "" .Values.plugin.hubbleUrl | quote }}
     }

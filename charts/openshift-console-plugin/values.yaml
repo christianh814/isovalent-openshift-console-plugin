@@ -3,7 +3,8 @@ plugin:
   name: ""
   description: ""
   image: "quay.io/christianh814/isovalent-openshift-console-plugin:v0.0.4"
-  # hubbleUrl is required. Pass via --set plugin.hubbleUrl=https://hubble.example.com
+  # hubbleUrl is optional. When unset, the "Isovalent Hubble Timescape" link is hidden.
+  # Pass via --set plugin.hubbleUrl=https://hubble.example.com to enable it.
   hubbleUrl: ""
   imagePullPolicy: IfNotPresent
   imagePullSecrets: []

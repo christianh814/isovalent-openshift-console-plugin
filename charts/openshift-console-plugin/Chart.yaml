@@ -2,7 +2,7 @@ apiVersion: v2
 name: isovalent-openshift-console-plugin
 description: OpenShift Console plugin for Isovalent / Cilium (CiliumNetworkPolicy, CiliumClusterwideNetworkPolicy) with a deep link to Isovalent Hubble Timescape.
 type: application
-version: 0.1.1
+version: 0.1.2
 appVersion: v0.0.4
 home: https://github.com/christianh814/isovalent-openshift-console-plugin
 sources:

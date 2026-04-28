@@ -4,7 +4,7 @@ A dynamic OpenShift Console plugin that adds first-class views for Cilium networ
 
 ## Quickstart
 
-Install the plugin into your OpenShift cluster with Helm. Only `plugin.hubbleUrl` is required, expose the URL of your Hubble UI however makes the most sense for your environment.
+Install the plugin into your OpenShift cluster with Helm. `plugin.hubbleUrl` is optional. When set, the plugin renders an inline deep link to your Hubble UI; when unset, the link is hidden. Expose the URL of your Hubble UI however makes the most sense for your environment.
 
 Example:
 
@@ -16,7 +16,7 @@ If your Hubble UI is already exposed via an OpenShift `Route`, you can derive th
 
 ```bash
 helm upgrade -i isovalent-openshift-console-plugin \
-  oci://ghcr.io/christianh814/charts/isovalent-openshift-console-plugin --version 0.1.1 \
+  oci://ghcr.io/christianh814/charts/isovalent-openshift-console-plugin --version 0.1.2 \
   -n isovalent-openshift-console-plugin --create-namespace \
   --set plugin.hubbleUrl=https://$(oc get route -n cilium hubble -o jsonpath='{.spec.host}')
 ```
@@ -28,7 +28,7 @@ After the install completes, refresh the OpenShift Console; the **Isovalent** se
 | Key | Default | Description |
 | --- | --- | --- |
 | `plugin.image` | `quay.io/christianh814/isovalent-openshift-console-plugin:v0.0.4` | Plugin container image. |
-| `plugin.hubbleUrl` | `""` *(required)* | Base URL of your Isovalent Hubble Timescape / Hubble UI. The chart fails to render without it. |
+| `plugin.hubbleUrl` | `""` | Base URL of your Isovalent Hubble Timescape / Hubble UI. Optional — when unset, the deep link is hidden. |
 | `plugin.imagePullPolicy` | `IfNotPresent` | Image pull policy for the plugin container. |
 | `plugin.imagePullSecrets` | `[]` | List of image pull secrets. |
 | `plugin.replicas` | `2` | Replica count for the plugin Deployment. |
