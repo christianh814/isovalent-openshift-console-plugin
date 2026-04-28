@@ -4,7 +4,7 @@ A dynamic OpenShift Console plugin that adds first-class views for Cilium networ
 
 ## Quickstart
 
-Install the plugin into your OpenShift cluster with Helm. `plugin.hubbleUrl` is optional. When set, the plugin renders an inline deep link to your Hubble UI; when unset, the link is hidden. Expose the URL of your Hubble UI however makes the most sense for your environment.
+Install the plugin into your OpenShift cluster with Helm. The `plugin.hubbleUrl` is optional. When set, the plugin renders an inline deep link to your Hubble UI; when unset, the link is hidden. Expose the URL of your Hubble UI however makes the most sense for your environment.
 
 Example:
 
@@ -12,7 +12,7 @@ Example:
 oc -n cilium create route edge  hubble --service hubble-timescape --port ui
 ```
 
-If your Hubble UI is already exposed via an OpenShift `Route`, you can derive the URL inline:
+Once your Hubble UI is exposed via an OpenShift `Route`, you can derive the URL inline with:
 
 ```bash
 helm upgrade -i isovalent-openshift-console-plugin \
