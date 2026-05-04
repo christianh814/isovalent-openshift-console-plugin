@@ -8,6 +8,7 @@ import { Bullseye, Spinner } from '@patternfly/react-core';
 import { CiliumClusterwideNetworkPolicyModel } from '@cilium-models/CiliumClusterwideNetworkPolicyModel';
 import { useIsovalentTranslation } from '@utils/hooks/useIsovalentTranslation';
 import CiliumClusterwideNetworkPolicyDetailsTab from './CiliumClusterwideNetworkPolicyDetailsTab';
+import CiliumClusterwideNetworkPolicyGraphTab from './CiliumClusterwideNetworkPolicyGraphTab';
 import ResourceYAMLTab from '@utils/components/ResourceYAMLTab/ResourceYAMLTab';
 import StatusTab from '@utils/components/StatusTab/StatusTab';
 
@@ -44,6 +45,11 @@ const CiliumClusterwideNetworkPolicyNavPage: React.FC<CiliumClusterwideNetworkPo
         href: 'yaml',
         name: t('YAML'),
         component: ResourceYAMLTab,
+      },
+      {
+        href: 'graph',
+        name: t('Policy Graph'),
+        component: CiliumClusterwideNetworkPolicyGraphTab,
       },
       {
         href: 'status',

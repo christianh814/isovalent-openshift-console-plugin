@@ -1,0 +1,155 @@
+.policy-graph-container {
+  position: relative;
+  width: 100%;
+  padding: 24px 16px;
+  background: var(--pf-t--global--background--color--secondary--default, #f5f7fa);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.policy-graph-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+  z-index: 1;
+}
+
+.policy-graph-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.policy-graph-column.center {
+  align-items: center;
+}
+
+.policy-graph-card {
+  background: #fff;
+  border: 1px solid var(--pf-t--global--border--color--default, #d2d2d2);
+  border-radius: 6px;
+  padding: 8px 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.policy-graph-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--pf-t--global--border--color--default, #eee);
+  margin-bottom: 6px;
+  color: var(--pf-t--global--text--color--regular, #151515);
+}
+
+.policy-graph-card-header .pf-v6-c-icon {
+  color: var(--pf-t--global--icon--color--regular, #6a6e73);
+}
+
+.policy-graph-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 4px;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+.policy-graph-row + .policy-graph-row {
+  border-top: 1px solid var(--pf-t--global--border--color--default, #f0f0f0);
+}
+
+.policy-graph-row-label {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.policy-graph-row-ports {
+  font-size: 12px;
+  color: var(--pf-t--global--text--color--subtle, #6a6e73);
+  white-space: nowrap;
+}
+
+.policy-graph-selector {
+  background: #fff;
+  border: 1px solid var(--pf-t--global--border--color--default, #d2d2d2);
+  border-radius: 6px;
+  padding: 12px 16px;
+  min-width: 220px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.policy-graph-selector-header {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--pf-t--global--text--color--regular, #151515);
+}
+
+.policy-graph-selector-defaults {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.policy-graph-default {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+.policy-graph-default.allow {
+  color: var(--pf-t--global--icon--color--status--success--default, #3e8635);
+}
+
+.policy-graph-default.deny {
+  color: var(--pf-t--global--icon--color--status--danger--default, #c9190b);
+}
+
+.policy-graph-selector-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--pf-t--global--text--color--regular, #151515);
+}
+
+.policy-graph-selector-label {
+  background: var(--pf-t--global--background--color--tertiary--default, #f0f0f0);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
+.policy-graph-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.policy-graph-edge {
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.policy-graph-edge.allow {
+  stroke: var(--pf-t--global--icon--color--status--success--default, #3e8635);
+}
+
+.policy-graph-edge.deny {
+  stroke: var(--pf-t--global--icon--color--status--danger--default, #c9190b);
+}
