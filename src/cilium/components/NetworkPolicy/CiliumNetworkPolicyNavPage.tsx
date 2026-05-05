@@ -11,6 +11,7 @@ import CiliumNetworkPolicyDetailsTab from './CiliumNetworkPolicyDetailsTab';
 import CiliumNetworkPolicyGraphTab from './CiliumNetworkPolicyGraphTab';
 import ResourceYAMLTab from '@utils/components/ResourceYAMLTab/ResourceYAMLTab';
 import StatusTab from '@utils/components/StatusTab/StatusTab';
+import ResourceHeader from '@utils/components/ResourceHeader/ResourceHeader';
 
 type CiliumNetworkPolicyNavPageProps = {
   name: string;
@@ -71,10 +72,10 @@ const CiliumNetworkPolicyNavPage: React.FC<CiliumNetworkPolicyNavPageProps> = ({
   }
 
   return (
-    <HorizontalNav
-      pages={pages}
-      resource={policy}
-    />
+    <>
+      <ResourceHeader model={CiliumNetworkPolicyModel} name={name} namespace={namespace} />
+      <HorizontalNav pages={pages} resource={policy} />
+    </>
   );
 };
 

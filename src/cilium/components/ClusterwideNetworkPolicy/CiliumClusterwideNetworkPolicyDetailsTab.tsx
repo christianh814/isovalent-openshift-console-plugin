@@ -36,7 +36,7 @@ const CiliumClusterwideNetworkPolicyDetailsTab: React.FC<Props> = ({ obj }) => {
       <Grid hasGutter className="pf-v5-u-mt-md">
         <GridItem span={6}>
           <Title headingLevel="h2" size="lg" className="pf-v5-u-mb-md">
-            {t('Details')}
+            {t('Policy Details')}
           </Title>
           <DescriptionList>
             <DescriptionListGroup>

@@ -11,6 +11,7 @@ import CiliumClusterwideNetworkPolicyDetailsTab from './CiliumClusterwideNetwork
 import CiliumClusterwideNetworkPolicyGraphTab from './CiliumClusterwideNetworkPolicyGraphTab';
 import ResourceYAMLTab from '@utils/components/ResourceYAMLTab/ResourceYAMLTab';
 import StatusTab from '@utils/components/StatusTab/StatusTab';
+import ResourceHeader from '@utils/components/ResourceHeader/ResourceHeader';
 
 type CiliumClusterwideNetworkPolicyNavPageProps = {
   name: string;
@@ -68,7 +69,12 @@ const CiliumClusterwideNetworkPolicyNavPage: React.FC<CiliumClusterwideNetworkPo
     );
   }
 
-  return <HorizontalNav pages={pages} resource={policy} />;
+  return (
+    <>
+      <ResourceHeader model={CiliumClusterwideNetworkPolicyModel} name={name} />
+      <HorizontalNav pages={pages} resource={policy} />
+    </>
+  );
 };
 
 export default CiliumClusterwideNetworkPolicyNavPage;

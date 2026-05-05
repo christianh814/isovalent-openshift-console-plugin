@@ -10,7 +10,7 @@ type ResourceYAMLTabProps = RouteComponentProps<{
 };
 
 const ResourceYAMLTab: React.FC<ResourceYAMLTabProps> = ({ obj }) => {
-  return <ResourceYAMLEditor initialResource={obj} header={obj?.kind} />;
+  return <ResourceYAMLEditor initialResource={obj} />;
 };
 
 export default ResourceYAMLTab;
