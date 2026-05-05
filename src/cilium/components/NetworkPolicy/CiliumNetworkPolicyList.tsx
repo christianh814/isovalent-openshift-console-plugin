@@ -18,6 +18,7 @@ import { sortable } from '@patternfly/react-table';
 import { CiliumNetworkPolicyKind, CiliumNetworkPolicyModel } from '@cilium-models/CiliumNetworkPolicyModel';
 import { useIsovalentTranslation } from '@utils/hooks/useIsovalentTranslation';
 import HubbleLink from '@utils/components/HubbleLink/HubbleLink';
+import PolicyActionsKebab from '@utils/components/PolicyActionsKebab/PolicyActionsKebab';
 
 const useColumns = (): TableColumn<CiliumNetworkPolicyKind>[] => {
   const { t } = useIsovalentTranslation();
@@ -52,6 +53,11 @@ const useColumns = (): TableColumn<CiliumNetworkPolicyKind>[] => {
         id: 'created',
         transforms: [sortable],
         sort: 'metadata.creationTimestamp',
+      },
+      {
+        title: '',
+        id: 'actions',
+        props: { className: 'pf-v6-c-table__action' },
       },
     ],
     [t],
@@ -94,6 +100,9 @@ const CiliumNetworkPolicyRow: React.FC<RowProps<CiliumNetworkPolicyKind>> = ({
       </TableData>
       <TableData id="created" activeColumnIDs={activeColumnIDs}>
         <Timestamp timestamp={obj.metadata.creationTimestamp} />
+      </TableData>
+      <TableData id="actions" activeColumnIDs={activeColumnIDs} className="pf-v6-c-table__action">
+        <PolicyActionsKebab obj={obj} model={CiliumNetworkPolicyModel} />
       </TableData>
     </>
   );

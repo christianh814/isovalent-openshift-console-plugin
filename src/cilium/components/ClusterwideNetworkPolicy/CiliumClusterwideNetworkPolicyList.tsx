@@ -21,6 +21,7 @@ import {
 } from '@cilium-models/CiliumClusterwideNetworkPolicyModel';
 import { useIsovalentTranslation } from '@utils/hooks/useIsovalentTranslation';
 import HubbleLink from '@utils/components/HubbleLink/HubbleLink';
+import PolicyActionsKebab from '@utils/components/PolicyActionsKebab/PolicyActionsKebab';
 
 const useColumns = (): TableColumn<CiliumClusterwideNetworkPolicyKind>[] => {
   const { t } = useIsovalentTranslation();
@@ -49,6 +50,11 @@ const useColumns = (): TableColumn<CiliumClusterwideNetworkPolicyKind>[] => {
         id: 'created',
         transforms: [sortable],
         sort: 'metadata.creationTimestamp',
+      },
+      {
+        title: '',
+        id: 'actions',
+        props: { className: 'pf-v6-c-table__action' },
       },
     ],
     [t],
@@ -86,6 +92,9 @@ const CiliumClusterwideNetworkPolicyRow: React.FC<
       </TableData>
       <TableData id="created" activeColumnIDs={activeColumnIDs}>
         <Timestamp timestamp={obj.metadata.creationTimestamp} />
+      </TableData>
+      <TableData id="actions" activeColumnIDs={activeColumnIDs} className="pf-v6-c-table__action">
+        <PolicyActionsKebab obj={obj} model={CiliumClusterwideNetworkPolicyModel} />
       </TableData>
     </>
   );
